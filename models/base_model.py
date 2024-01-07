@@ -11,6 +11,8 @@ class BaseModel:
     """The super class
     """
     def __init__(self, *args, **kwargs):
+        """Initializes a BaseModel instance
+        """
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
