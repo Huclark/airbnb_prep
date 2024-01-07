@@ -49,6 +49,6 @@ class FileStorage:
                 load_obj = json.load(file)
                 for key, value in load_obj.items():
                     class_name, obj_id = key.split(".")
-                    self.__objects[key] =globals()[class_name](**value)
+                    self.__objects[key] = globals()[class_name](**value)
         except FileNotFoundError:
             pass
