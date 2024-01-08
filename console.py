@@ -20,7 +20,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, arg):
-        """Use ctrl+D to exit as keyboard shortcut to exit program
+        """Use ctrl+D as keyboard shortcut to exit program
         """
         print()
         return True
@@ -33,6 +33,22 @@ class HBNBCommand(cmd.Cmd):
         """Does nothing on an empty line so as to handle
         the case where emptyline + ENTER key is used"""
         pass
+    
+    def do_create(self, arg):
+        """Creates a new instance of BaseModel, saves it (to the JSON file)
+        and prints the id.
+
+		Args:
+			arg (str): The argument passed to create command
+		"""
+        if not arg:
+            print("** class name missing **")
+        elif arg not in globals() or not isinstance(globals()[arg], type):
+            print("** class doesn't exist **")
+        else:
+            newInstance = globals()[arg]()
+            newInstance.save()
+            print(newInstance.id)
 
 
 if __name__ == "__main__":
